@@ -1,273 +1,237 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rolex | Full Stack Developer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rolex Sir | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
     :root {
-      --primary: #007bff;
       --light-bg: #f4f4f4;
       --dark-bg: #121212;
-      --text-light: #ffffff;
+      --text-light: #fff;
       --text-dark: #1f1f1f;
-      --fun-bg: #e0f7fa;
+      --primary: #007bff;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
       font-family: 'Poppins', sans-serif;
-      background: var(--light-bg);
+      background-color: var(--light-bg);
       color: var(--text-dark);
-      transition: all 0.3s ease;
+      transition: background 0.3s, color 0.3s;
     }
-
-    body.dark-mode {
-      background: var(--dark-bg);
+    body.dark {
+      background-color: var(--dark-bg);
       color: var(--text-light);
     }
-
-    .container {
-      max-width: 1200px;
-      margin: auto;
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
       padding: 2rem;
     }
-
-    .hero {
-      text-align: center;
-      padding: 3rem 1rem 4rem;
-    }
-
     .avatar {
-      width: 160px;
-      height: 200px;
-      border-radius: 10px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
       object-fit: cover;
       border: 4px solid var(--primary);
-      margin-bottom: 1rem;
     }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      font-weight: 600;
-    }
-
-    .hero p {
+    .typewriter {
+      font-size: 1.5rem;
       margin-top: 1rem;
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .section {
-      margin-top: 4rem;
-    }
-
-    .section h2 {
-      font-size: 2rem;
-      margin-bottom: 1.2rem;
-      color: var(--primary);
-      text-align: center;
-    }
-
-    .skills .bar {
-      margin-bottom: 1rem;
-    }
-
-    .bar-title {
       font-weight: 600;
+      color: var(--primary);
     }
-
-    .bar-bg {
-      width: 100%;
+    .section-title {
+      font-size: 2rem;
+      margin-top: 2rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .skill-bar {
       background: #ddd;
-      height: 20px;
-      border-radius: 10px;
+      border-radius: 50px;
+      margin-bottom: 1rem;
       overflow: hidden;
     }
-
-    .bar-fill {
-      height: 100%;
-      background: var(--primary);
-      color: #fff;
-      text-align: right;
-      padding-right: 10px;
+    .skill-bar-fill {
+      height: 20px;
       line-height: 20px;
+      padding-left: 10px;
+      background: var(--primary);
+      color: white;
       font-size: 0.85rem;
-      font-weight: 500;
+      border-radius: 50px 0 0 50px;
     }
-
-    .projects .project {
+    .project {
       margin-bottom: 2rem;
       padding: 1rem;
       border: 1px solid #ccc;
       border-radius: 10px;
-      background: #fff;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: white;
     }
-
-    .projects .project:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    body.dark-mode .projects .project {
-      background: #1f1f1f;
+    body.dark .project {
+      background: #1e1e1e;
       border-color: #333;
     }
-
-    .project a {
-      display: inline-block;
-      margin-top: 0.5rem;
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .project a:hover {
-      color: #0056b3;
-      transform: scale(1.05);
-    }
-
-    .toggle-btn {
+    .emoji-cursor {
       position: fixed;
-      top: 1rem;
-      right: 1rem;
-      padding: 0.5rem 1rem;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
+      pointer-events: none;
       z-index: 999;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    .toggle-btn:hover {
-      background: #0056b3;
-    }
-
-    .fun-box {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      background: var(--fun-bg);
-      padding: 2rem;
-      border-radius: 15px;
-      text-align: center;
-      max-width: 700px;
-      margin: auto;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-
-    body.dark-mode .fun-box {
-      background: #1a2b2e;
-      color: var(--text-light);
-    }
-
-    .fun-box li {
-      list-style: none;
-      font-size: 1rem;
-      font-weight: 500;
+      font-size: 24px;
     }
   </style>
 </head>
 <body>
-  <button class="toggle-btn" onclick="toggleMode()">Toggle Mode</button>
-
-  <section class="hero">
-    <img src="avatar.jpg" alt="Rolex" class="avatar">
+  <header>
+    <img src="avatar.jpg" alt="Avatar" class="avatar" />
     <h1>Rolex Sir</h1>
-    <p>A <span class="blue" style="font-weight:bold; color:var(--primary) ">solo</span> full stack <span class="blue" style="font-weight:bold; color:var(--primary) ">developer,</span> UI/UX <span class="blue" style="font-weight:bold; color:var(--primary)">designer,</span>
- app <span class="blue" style="font-weight:bold; color:var(--primary) ">builder,</span> backend <span class="blue" style="font-weight:bold; color:var(--primary) ">explorer</span>, kabaddi <span class="blue" style="font-weight:bold; color:var(--primary) ">player</span>, and a kind <span class="blue" style="font-weight:bold; color:var(--primary) ">human</span> who shares knowledge and tools with <span class="blue" style="font-weight:bold; color:var(--primary) ">everyone</span> — all <span class="blue" style="font-weight:bold; color:var(--primary) ">alone</span>, no <span class="blue" style="font-weight:bold; color:var(--primary) ">team</span>, just <span class="blue" style="font-weight:bold; color:var(--primary) ">passion</span> & <span class="blue" style="font-weight:bold; color:var(--primary) ">dedication</span>.</p>
+    <div class="typewriter" id="typewriter"></div>
+  </header>
+
+  <section class="container">
+    <h2 class="section-title">About Me</h2>
+    <p>I’m a passionate full stack developer, designer, app builder and an open-hearted kabaddi player who believes in giving and sharing. Exploring AI with Python and always pushing the limits of creativity.</p>
+
+    <h2 class="section-title">Skills</h2>
+    <div id="skills"></div>
+
+    <h2 class="section-title">Projects</h2>
+    <div id="projects"></div>
+
+    <h2 class="section-title">Tools I Use</h2>
+    <p>VS Code, Pen & Paper, Chrome DevTools, Figma, Flutter, Canva</p>
+
+    <h2 class="section-title">My Goals</h2>
+    <ul>
+      <li>Learn full backend with Node.js</li>
+      <li>Build 10+ real-world projects</li>
+      <li>Create my own business</li>
+      <li>Make my own AI (Jarvis)</li>
+      <li>Build a real-world game</li>
+    </ul>
+
+    <h2 class="section-title">Fun Facts</h2>
+    <ul>
+      <li>I love Kabaddi more than gym</li>
+      <li>I break things just to rebuild them better</li>
+      <li>I want to help others learn for free</li>
+      <li>I’m a 90s kid – aaj ka generation thoda off lagta hai 😅</li>
+    </ul>
+
+    <h2 class="section-title">Certificates</h2>
+    <ul>
+      <li>Delta 6.0 – Apna College</li>
+      <li>Python – Code With Harry</li>
+      <li>Flutter – Udemy</li>
+      <li>Designing – Udemy</li>
+      <li>Editing – Udemy</li>
+    </ul>
+
+    <h2 class="section-title">Contact Me</h2>
+    <p>Email: univora@gmail.com</p>
   </section>
 
-  <div class="container">
-    <section class="section">
-      <h2>Skills</h2>
-      <div class="skills">
-        <div class="bar">
-          <div class="bar-title">HTML/CSS</div>
-          <div class="bar-bg"><div class="bar-fill" style="width:93%">93%</div></div>
-        </div>
-        <div class="bar">
-          <div class="bar-title">JavaScript</div>
-          <div class="bar-bg"><div class="bar-fill" style="width:82%">82%</div></div>
-        </div>
-        <div class="bar">
-          <div class="bar-title">React</div>
-          <div class="bar-bg"><div class="bar-fill" style="width:80%">80%</div></div>
-        </div>
-        <div class="bar">
-          <div class="bar-title">Python</div>
-          <div class="bar-bg"><div class="bar-fill" style="width:71%">71%</div></div>
-        </div>
-        <div class="bar">
-          <div class="bar-title">Flutter (Dart)</div>
-          <div class="bar-bg"><div class="bar-fill" style="width:80%">80%</div></div>
-        </div>
-        <div class="bar">
-          <div class="bar-title">UI/UX Design</div>
-          <div class="bar-bg"><div class="bar-fill" style="width:73%">73%</div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Projects</h2>
-      <div class="projects">
-        <div class="project">
-          <h3>🎬 Strooma</h3>
-          <p>One platform for all your favorite movies and series — Netflix, Prime, Hotstar styled.</p>
-          <p><strong>Tech Used:</strong> HTML, CSS, JS, JSON</p>
-          <a href="https://strooma1.netlify.app" target="_blank">Live Demo</a>
-        </div>
-        <div class="project">
-          <h3>📚 Notora</h3>
-          <p>All your notes and PDFs in one place — fast, minimal and organized.</p>
-          <p><strong>Tech Used:</strong> HTML, CSS, JS, JSON</p>
-          <a href="https://notora1.netlify.app" target="_blank">Live Demo</a>
-        </div>
-        <div class="project">
-          <h3>📖 Skillora</h3>
-          <p>Courses and learning for every skill — code, fitness, design & more.</p>
-          <p><strong>Tech Used:</strong> HTML, CSS, JS, JSON</p>
-          <a href="https://skillora1.netlify.app" target="_blank">Live Demo</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Fun</h2>
-      <ul class="fun-box">
-        <li>I love Kabaddi more than gym 🏋️</li>
-        <li>I want to build a personal AI like Jarvis 🤖</li>
-        <li>I design better when I’m sipping chai ☕</li>
-        <li>No team, no agency — just me, my system, and dreams 💻</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2>Contact Me</h2>
-      <p style="text-align:center;">Email: univora@gmail.com</p>
-      <p style="text-align:center;">GitHub: <a href="https://github.com" target="_blank">github.com/yourusername</a></p>
-      <p style="text-align:center;">LinkedIn: <a href="https://linkedin.com" target="_blank">linkedin.com/in/yourprofile</a></p>
-    </section>
-  </div>
-
   <script>
-    function toggleMode() {
-      document.body.classList.toggle('dark-mode');
+    const skills = [
+      { name: "HTML/CSS", percent: 93 },
+      { name: "JavaScript", percent: 82 },
+      { name: "React", percent: 80 },
+      { name: "UI/UX Design", percent: 73 },
+      { name: "Python", percent: 71 },
+      { name: "C#", percent: 70 },
+      { name: "Dart", percent: 80 },
+      { name: "Kabaddi", percent: 95 },
+      { name: "Acting", percent: 99 },
+    ];
+
+    const projects = [
+      {
+        name: "Strooma",
+        desc: "All your favorite movies & shows, from across the world. 📺 Netflix, Prime, Hotstar...",
+        url: "https://strooma1.netlify.app",
+        tech: "HTML, CSS, JS, JSON, Database"
+      },
+      {
+        name: "Notora",
+        desc: "All your notes, PDFs, & study material in one place. 📘 Organized, fast & mobile-friendly.",
+        url: "https://notora1.netlify.app",
+        tech: "HTML, CSS, JS, JSON, Database"
+      },
+      {
+        name: "Skillora",
+        desc: "Learn new skills from coding to fitness to photography. 💡 Modern courses for every passion.",
+        url: "https://skillora1.netlify.app",
+        tech: "HTML, CSS, JS, JSON, Database"
+      }
+    ];
+
+    const skillContainer = document.getElementById("skills");
+    skills.forEach(skill => {
+      skillContainer.innerHTML += `
+        <div>
+          <strong>${skill.name}</strong>
+          <div class="skill-bar">
+            <div class="skill-bar-fill" style="width:${skill.percent}%">${skill.percent}%</div>
+          </div>
+        </div>
+      `;
+    });
+
+    const projectContainer = document.getElementById("projects");
+    projects.forEach(p => {
+      projectContainer.innerHTML += `
+        <div class="project">
+          <h4>${p.name}</h4>
+          <p>${p.desc}</p>
+          <p><strong>Tech Used:</strong> ${p.tech}</p>
+          <a href="${p.url}" target="_blank">Live Demo</a>
+        </div>
+      `;
+    });
+
+    const words = ["Full Stack Developer", "App Developer", "UI/UX Designer", "AI Enthusiast", "Kabaddi Player", "Ek Accha Insaan"];
+    let i = 0, j = 0, current = "", isDeleting = false;
+    const typer = document.getElementById("typewriter");
+
+    function typeEffect() {
+      if (isDeleting) {
+        current = words[i].substring(0, j--);
+      } else {
+        current = words[i].substring(0, j++);
+      }
+      typer.textContent = current;
+
+      if (!isDeleting && j === words[i].length) {
+        isDeleting = true;
+        setTimeout(typeEffect, 1000);
+      } else if (isDeleting && j === 0) {
+        isDeleting = false;
+        i = (i + 1) % words.length;
+        setTimeout(typeEffect, 500);
+      } else {
+        setTimeout(typeEffect, isDeleting ? 50 : 100);
+      }
     }
+    typeEffect();
   </script>
 </body>
 </html>
