@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rolex Sir | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    :root {
+      --light-bg: #f4f4f4;
+      --dark-bg: #121212;
+      --text-light: #fff;
+      --text-dark: #1f1f1f;
+      --primary: #007bff;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark {
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+    }
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .avatar {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--primary);
+    }
+    .typewriter {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .section-title {
+      font-size: 2rem;
+      margin-top: 2rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .skill-bar {
+      background: #ddd;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    .skill-bar-fill {
+      height: 20px;
+      line-height: 20px;
+      padding-left: 10px;
+      background: var(--primary);
+      color: white;
+      font-size: 0.85rem;
+      border-radius: 50px 0 0 50px;
+    }
+    .project {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background: white;
+    }
+    body.dark .project {
+      background: #1e1e1e;
+      border-color: #333;
+    }
+    .emoji-cursor {
+      position: fixed;
+      pointer-events: none;
+      z-index: 999;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="avatar.jpg" alt="Avatar" class="avatar" />
+    <h1>Rolex Sir</h1>
+    <div class="typewriter" id="typewriter"></div>
+  </header>
+
+  <section class="container">
+    <h2 class="section-title">About Me</h2>
+    <p>I’m a passionate full stack developer, designer, app builder and an open-hearted kabaddi player who believes in giving and sharing. Exploring AI with Python and always pushing the limits of creativity.</p>
+
+    <h2 class="section-title">Skills</h2>
+    <div id="skills"></div>
+
+    <h2 class="section-title">Projects</h2>
+    <div id="projects"></div>
+
+    <h2 class="section-title">Tools I Use</h2>
+    <p>VS Code, Pen & Paper, Chrome DevTools, Figma, Flutter, Canva</p>
+
+    <h2 class="section-title">My Goals</h2>
+    <ul>
+      <li>Learn full backend with Node.js</li>
+      <li>Build 10+ real-world projects</li>
+      <li>Create my own business</li>
+      <li>Make my own AI (Jarvis)</li>
+      <li>Build a real-world game</li>
+    </ul>
+
+    <h2 class="section-title">Fun Facts</h2>
+    <ul>
+      <li>I love Kabaddi more than gym</li>
+      <li>I break things just to rebuild them better</li>
+      <li>I want to help others learn for free</li>
+      <li>I’m a 90s kid – aaj ka generation thoda off lagta hai 😅</li>
+    </ul>
+
+    <h2 class="section-title">Certificates</h2>
+    <ul>
+      <li>Delta 6.0 – Apna College</li>
+      <li>Python – Code With Harry</li>
+      <li>Flutter – Udemy</li>
+      <li>Designing – Udemy</li>
+      <li>Editing – Udemy</li>
+    </ul>
+
+    <h2 class="section-title">Contact Me</h2>
+    <p>Email: univora@gmail.com</p>
+  </section>
+
+  <script>
+    const skills = [
+      { name: "HTML/CSS", percent: 93 },
+      { name: "JavaScript", percent: 82 },
+      { name: "React", percent: 80 },
+      { name: "UI/UX Design", percent: 73 },
+      { name: "Python", percent: 71 },
+      { name: "C#", percent: 70 },
+      { name: "Dart", percent: 80 },
+      { name: "Kabaddi", percent: 95 },
+      { name: "Acting", percent: 99 },
+    ];
+
+    const projects = [
+      {
+        name: "Strooma",
+        desc: "All your favorite movies & shows, from across the world. 📺 Netflix, Prime, Hotstar...",
+        url: "https://strooma1.netlify.app",
+        tech: "HTML, CSS, JS, JSON, Database"
+      },
+      {
+        name: "Notora",
+        desc: "All your notes, PDFs, & study material in one place. 📘 Organized, fast & mobile-friendly.",
+        url: "https://notora1.netlify.app",
+        tech: "HTML, CSS, JS, JSON, Database"
+      },
+      {
+        name: "Skillora",
+        desc: "Learn new skills from coding to fitness to photography. 💡 Modern courses for every passion.",
+        url: "https://skillora1.netlify.app",
+        tech: "HTML, CSS, JS, JSON, Database"
+      }
+    ];
+
+    const skillContainer = document.getElementById("skills");
+    skills.forEach(skill => {
+      skillContainer.innerHTML += `
+        <div>
+          <strong>${skill.name}</strong>
+          <div class="skill-bar">
+            <div class="skill-bar-fill" style="width:${skill.percent}%">${skill.percent}%</div>
+          </div>
+        </div>
+      `;
+    });
+
+    const projectContainer = document.getElementById("projects");
+    projects.forEach(p => {
+      projectContainer.innerHTML += `
+        <div class="project">
+          <h4>${p.name}</h4>
+          <p>${p.desc}</p>
+          <p><strong>Tech Used:</strong> ${p.tech}</p>
+          <a href="${p.url}" target="_blank">Live Demo</a>
+        </div>
+      `;
+    });
+
+    const words = ["Full Stack Developer", "App Developer", "UI/UX Designer", "AI Enthusiast", "Kabaddi Player", "Ek Accha Insaan"];
+    let i = 0, j = 0, current = "", isDeleting = false;
+    const typer = document.getElementById("typewriter");
+
+    function typeEffect() {
+      if (isDeleting) {
+        current = words[i].substring(0, j--);
+      } else {
+        current = words[i].substring(0, j++);
+      }
+      typer.textContent = current;
+
+      if (!isDeleting && j === words[i].length) {
+        isDeleting = true;
+        setTimeout(typeEffect, 1000);
+      } else if (isDeleting && j === 0) {
+        isDeleting = false;
+        i = (i + 1) % words.length;
+        setTimeout(typeEffect, 500);
+      } else {
+        setTimeout(typeEffect, isDeleting ? 50 : 100);
+      }
+    }
+    typeEffect();
+  </script>
+</body>
+</html>

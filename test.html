@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rolex | Full Stack Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #007bff;
+      --light-bg: #f4f4f4;
+      --dark-bg: #121212;
+      --text-light: #ffffff;
+      --text-dark: #1f1f1f;
+      --fun-bg: #e0f7fa;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-bg);
+      color: var(--text-dark);
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode {
+      background: var(--dark-bg);
+      color: var(--text-light);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem 4rem;
+    }
+
+    .avatar {
+      width: 160px;
+      height: 200px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 4px solid var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+    }
+
+    .hero p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section {
+      margin-top: 4rem;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      color: var(--primary);
+      text-align: center;
+    }
+
+    .skills .bar {
+      margin-bottom: 1rem;
+    }
+
+    .bar-title {
+      font-weight: 600;
+    }
+
+    .bar-bg {
+      width: 100%;
+      background: #ddd;
+      height: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: var(--primary);
+      color: #fff;
+      text-align: right;
+      padding-right: 10px;
+      line-height: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .projects .project {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background: #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .projects .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark-mode .projects .project {
+      background: #1f1f1f;
+      border-color: #333;
+    }
+
+    .project a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .project a:hover {
+      color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      z-index: 999;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background: #0056b3;
+    }
+
+    .fun-box {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: var(--fun-bg);
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    body.dark-mode .fun-box {
+      background: #1a2b2e;
+      color: var(--text-light);
+    }
+
+    .fun-box li {
+      list-style: none;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-btn" onclick="toggleMode()">Toggle Mode</button>
+
+  <section class="hero">
+    <img src="avatar.jpg" alt="Rolex" class="avatar">
+    <h1>Rolex Sir</h1>
+    <p>A <span class="blue" style="font-weight:bold; color:var(--primary) ">solo</span> full stack <span class="blue" style="font-weight:bold; color:var(--primary) ">developer,</span> UI/UX <span class="blue" style="font-weight:bold; color:var(--primary)">designer,</span>
+ app <span class="blue" style="font-weight:bold; color:var(--primary) ">builder,</span> backend <span class="blue" style="font-weight:bold; color:var(--primary) ">explorer</span>, kabaddi <span class="blue" style="font-weight:bold; color:var(--primary) ">player</span>, and a kind <span class="blue" style="font-weight:bold; color:var(--primary) ">human</span> who shares knowledge and tools with <span class="blue" style="font-weight:bold; color:var(--primary) ">everyone</span> — all <span class="blue" style="font-weight:bold; color:var(--primary) ">alone</span>, no <span class="blue" style="font-weight:bold; color:var(--primary) ">team</span>, just <span class="blue" style="font-weight:bold; color:var(--primary) ">passion</span> & <span class="blue" style="font-weight:bold; color:var(--primary) ">dedication</span>.</p>
+  </section>
+
+  <div class="container">
+    <section class="section">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="bar">
+          <div class="bar-title">HTML/CSS</div>
+          <div class="bar-bg"><div class="bar-fill" style="width:93%">93%</div></div>
+        </div>
+        <div class="bar">
+          <div class="bar-title">JavaScript</div>
+          <div class="bar-bg"><div class="bar-fill" style="width:82%">82%</div></div>
+        </div>
+        <div class="bar">
+          <div class="bar-title">React</div>
+          <div class="bar-bg"><div class="bar-fill" style="width:80%">80%</div></div>
+        </div>
+        <div class="bar">
+          <div class="bar-title">Python</div>
+          <div class="bar-bg"><div class="bar-fill" style="width:71%">71%</div></div>
+        </div>
+        <div class="bar">
+          <div class="bar-title">Flutter (Dart)</div>
+          <div class="bar-bg"><div class="bar-fill" style="width:80%">80%</div></div>
+        </div>
+        <div class="bar">
+          <div class="bar-title">UI/UX Design</div>
+          <div class="bar-bg"><div class="bar-fill" style="width:73%">73%</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="project">
+          <h3>🎬 Strooma</h3>
+          <p>One platform for all your favorite movies and series — Netflix, Prime, Hotstar styled.</p>
+          <p><strong>Tech Used:</strong> HTML, CSS, JS, JSON</p>
+          <a href="https://strooma1.netlify.app" target="_blank">Live Demo</a>
+        </div>
+        <div class="project">
+          <h3>📚 Notora</h3>
+          <p>All your notes and PDFs in one place — fast, minimal and organized.</p>
+          <p><strong>Tech Used:</strong> HTML, CSS, JS, JSON</p>
+          <a href="https://notora1.netlify.app" target="_blank">Live Demo</a>
+        </div>
+        <div class="project">
+          <h3>📖 Skillora</h3>
+          <p>Courses and learning for every skill — code, fitness, design & more.</p>
+          <p><strong>Tech Used:</strong> HTML, CSS, JS, JSON</p>
+          <a href="https://skillora1.netlify.app" target="_blank">Live Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Fun</h2>
+      <ul class="fun-box">
+        <li>I love Kabaddi more than gym 🏋️</li>
+        <li>I want to build a personal AI like Jarvis 🤖</li>
+        <li>I design better when I’m sipping chai ☕</li>
+        <li>No team, no agency — just me, my system, and dreams 💻</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Contact Me</h2>
+      <p style="text-align:center;">Email: univora@gmail.com</p>
+      <p style="text-align:center;">GitHub: <a href="https://github.com" target="_blank">github.com/yourusername</a></p>
+      <p style="text-align:center;">LinkedIn: <a href="https://linkedin.com" target="_blank">linkedin.com/in/yourprofile</a></p>
+    </section>
+  </div>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+</html>
