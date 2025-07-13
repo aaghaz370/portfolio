@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rolex | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --primary: #6C63FF;
+      --secondary: #00C9A7;
+      --bg-gradient: linear-gradient(135deg, #FFDEE9, #B5FFFC);
+      --text-dark: #1e1e1e;
+      --text-light: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    section {
+      padding: 4rem 2rem;
+    }
+
+    .hero {
+      text-align: center;
+      padding-top: 5rem;
+    }
+
+    .avatar {
+      width: 160px;
+      height: 200px;
+      border-radius: 12px;
+      border: 4px solid var(--primary);
+      object-fit: cover;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-top: 1rem;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 1rem auto;
+      font-size: 1.1rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--primary);
+      position: relative;
+    }
+
+    .skills-chart {
+      max-width: 400px;
+      margin: auto;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+
+    .project-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .about {
+      max-width: 800px;
+      margin: auto;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      background: #ffffff88;
+      padding: 2rem;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: var(--primary);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 1.5rem;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      text-align: left;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      width: 20px;
+      height: 20px;
+      background: var(--secondary);
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .timeline-item:nth-child(odd)::before {
+      right: -10px;
+    }
+
+    .timeline-item:nth-child(even)::before {
+      left: -10px;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem;
+      background: #121212;
+      color: white;
+      flex-wrap: wrap;
+    }
+
+    .footer .quick-links a {
+      color: white;
+      margin-right: 1rem;
+      text-decoration: none;
+    }
+
+    .footer .contact-icons a {
+      margin-left: 1rem;
+      color: white;
+      font-size: 1.4rem;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <img src="avatar.jpg" alt="Rolex" class="avatar">
+    <h1>Rolex Sir</h1>
+    <p>A solo full stack <strong style="color:var(--primary)">developer</strong>, UI/UX <strong style="color:var(--primary)">designer</strong>, and kabaddi <strong style="color:var(--primary)">player</strong> sharing tools & knowledge with <strong style="color:var(--primary)">everyone</strong>.</p>
+  </section>
+
+  <section>
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-chart">
+      <canvas id="skillsRadar"></canvas>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">About Me</h2>
+    <div class="about">
+      Passionate about creating intuitive digital products. I’ve built complete apps, designed user interfaces, architected backend systems, and enjoy every bit of full-stack development — all done solo.
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <div class="project-title">EduSparkK</div>
+        <p>Dynamic education platform with categorized browsing and JSON-based search.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-title">Quizard</div>
+        <p>Animated board-selector UI for NEET/JEE/dropper categories with smooth dropdown effects.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-title">Mini Game Hub</div>
+        <p>100+ mini games in a modern animated single-page layout.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Timeline</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h4>2022</h4>
+        <p>Started web development journey.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>2023</h4>
+        <p>Built first full-stack app solo.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>2024</h4>
+        <p>Published multiple educational platforms.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>2025</h4>
+        <p>Focused on animations, games, and UI perfection.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="quick-links">
+      <a href="#">Home</a>
+      <a href="#">Projects</a>
+      <a href="#">About</a>
+      <a href="#">Timeline</a>
+    </div>
+    <div>
+      <strong>Made with ❤️ by Rolex</strong>
+    </div>
+    <div class="contact-icons">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="mailto:rolex@email.com"><i class="fas fa-envelope"></i></a>
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+      <a href="#"><i class="fas fa-phone"></i></a>
+    </div>
+  </footer>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script>
+    const ctx = document.getElementById('skillsRadar').getContext('2d');
+    new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: ['HTML/CSS', 'JavaScript', 'React', 'Python', 'Flutter', 'UI/UX'],
+        datasets: [{
+          label: 'Skill Level',
+          data: [93, 82, 80, 71, 80, 73],
+          backgroundColor: 'rgba(108, 99, 255, 0.2)',
+          borderColor: 'rgba(108, 99, 255, 1)',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        scales: {
+          r: {
+            angleLines: { display: false },
+            suggestedMin: 50,
+            suggestedMax: 100
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
