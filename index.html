@@ -707,6 +707,72 @@ footer.footer {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* notice */
+.notice-banner {
+  position: fixed;
+  top: 20px;
+  left: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #ff4e50, #f9d423);
+  color: white;
+  padding: 1.2rem 1rem;
+  border-radius: 15px;
+  z-index: 9999;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transform: scale(0.9);
+  opacity: 0;
+  animation: showNotice 0.6s ease-out forwards;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+}
+
+.notice-text {
+  flex: 1;
+  font-weight: 500;
+  animation: pulse 2s infinite;
+}
+
+.close-btn {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255,255,255,0.5);
+  color: #000;
+}
+
+@keyframes showNotice {
+  0% { opacity: 0; transform: scale(0.9) translateY(-30px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+@keyframes hideNotice {
+  to { opacity: 0; transform: scale(0.95) translateY(-20px); }
+}
+
+@media (min-width: 768px) {
+  .notice-banner {
+    max-width: 600px;
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+  }
+}
 
 
   </style>
@@ -920,6 +986,23 @@ footer.footer {
   </div>
 </footer>
 
+<div class="notice-banner" id="noticeBanner" style="display:none;">
+  <div class="notice-content">
+    <span class="notice-text">📢 Important Notice:
+
+Please note that all updates to any website are scheduled exclusively for **Sundays**. During the rest of the week, content may remain unchanged or under review. This routine helps us ensure that every update is well-tested, stable, and genuinely valuable for all users.
+
+If you're not seeing recent changes, don’t worry — we’re working behind the scenes. New features, bug fixes, and improvements will go live every Sunday.
+
+Thank you for your patience and continued support. 💙
+</span>
+    <button class="close-btn" onclick="closeNotice()">✖</button>
+  </div>
+</div>
+
+<audio id="noticeSound" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
+
+
 
 
   <script>
@@ -981,6 +1064,26 @@ footer.footer {
     glare: true,
     "max-glare": 0.3
   });
+
+
+  // notice
+  
+   window.addEventListener("load", () => {
+    if (!sessionStorage.getItem("noticeShown")) {
+      document.getElementById("noticeBanner").style.display = "flex";
+      document.getElementById("noticeSound").play().catch(() => {});
+      sessionStorage.setItem("noticeShown", "true");
+    }
+  });
+
+  function closeNotice() {
+    const banner = document.getElementById("noticeBanner");
+    banner.style.animation = "hideNotice 0.4s ease forwards";
+    setTimeout(() => {
+      banner.style.display = "none";
+    }, 400);
+  }
+
 
 
   </script>
